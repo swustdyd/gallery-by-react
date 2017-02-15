@@ -4,7 +4,7 @@ html, body{
   height: 100%;
   margin: 0;
   padding: 0%;
-  background-color: #222;
+  background-color: #fff;
 }
 
 .app{
@@ -35,13 +35,13 @@ html, body{
         max-width: 280px;
         max-height: 280px;
       }
-    }
-    figcaption {
-      text-align: center;
-      .img-title {
-        margin: 20px 0 0 0;
-        font-size: 16px;
-        color: #a7a0a2;
+      figcaption {
+        text-align: center;
+        .img-title {
+          margin: 20px 0 0 0;
+          font-size: 16px;
+          color: #a7a0a2;
+        }
       }
     }
   }
@@ -54,5 +54,8 @@ html, body{
   bottom: 30px;
   z-index: 101;
   text-align: center;
+}
+.commentBox{
+  margin-top: 30px;
 }
 
