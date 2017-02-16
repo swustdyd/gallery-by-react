@@ -78,7 +78,7 @@ class CommentBox extends React.Component{
       url: this.props.url,
       dataType: 'json',
       success: function(data) {
-        alert(data);
+        //alert(data);
         this.setState({data: data});
       }.bind(this),
       error: function(xhr, status, err) {
