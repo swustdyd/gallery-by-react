@@ -3,6 +3,7 @@ require('styles/App.scss');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ControllerUnit from './ControllerUnit';
 
 var imageDatas = require('../data/imageDatas.json');
 
@@ -257,17 +258,26 @@ class GalleryByReactAppComponent extends React.Component {
         center = {this.center(index)}
         inverse = {this.inverse(index)}
       />);
+      controllerUnits.push(<ControllerUnit
+        ref={"controllerUnit" + index}
+        arrange = {this.state.imgsArrangeArr[index]}
+        center = {this.center(index)}
+        inverse = {this.inverse(index)}
+      />);
     });
-
-
+    var viewHeight = document.body.offsetHeight;
+    //alert(viewHeight);
+    var styleObj={
+      height: viewHeight
+    };
     return (
-      <section className="stage" ref="stage">
+      <section className="stage" ref="stage" style={styleObj}>
         <section className="image-sec">
           {imgFigures}
         </section>
-        <ConrrollerNav className="controller-nav">
+        <nav className="controller-nav">
           {controllerUnits}
-        </ConrrollerNav>
+        </nav>
       </section>
     );
   }
