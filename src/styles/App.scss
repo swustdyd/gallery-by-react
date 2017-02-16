@@ -63,10 +63,10 @@ html, body{
           padding: 30px;
           box-sizing: border-box;
           text-align: center;
-          color: #666;
+          color: #000;
           transform: rotateY(180deg) translateZ(1px);
           backface-visibility:hidden;
-          background: #fff;
+          background-color: #a7a0a2;
         }
       }
     }
@@ -90,12 +90,13 @@ html, body{
       transform: scale(0.5);
       cursor: pointer;
       transition: transform .6s ease-in-out, background-color .3s ease-in-out;
+      &:hover{ transform: scale(0.7);background-color: #fff}
       &.is-center{
         transform: scale(1);
-        background-color: #888;
+        background-color: #fff;
       }
       &.is-inverse{
-        background-color: #000;
+        background-color: #a7a0a2;
         transform: rotateY(180deg);
       }
     }
