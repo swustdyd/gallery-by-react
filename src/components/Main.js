@@ -82,6 +82,31 @@ class ImgFigure extends React.Component{
   }
 }
 
+class ControllerUnit extends React.Component{
+  constructor(props){
+    super(props);
+    this.handleClcik = this.handleClcik.bind(this);
+  }
+
+  handleClcik(e){
+    if(this.props.arrange.isCenter){
+      this.props.inverse();
+    }else{
+      this.props.center();
+    }
+    e.stopPropagation();
+    e.preventDefault();
+  }
+
+  render(){
+    var controllerUnitClassName = "controller-unit";
+    controllerUnitClassName += this.props.arrange.isCenter ? " is-center " : "";
+    return(
+      <span className={controllerUnitClassName} onClick={this.handleClcik}></span>
+    );
+  }
+}
+
 class GalleryByReactAppComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -257,6 +282,12 @@ class GalleryByReactAppComponent extends React.Component {
         center = {this.center(index)}
         inverse = {this.inverse(index)}
       />);
+      controllerUnits.push(<ControllerUnit
+        ref={"controllerUnits" + index}
+        arrange = {this.state.imgsArrangeArr[index]}
+        center = {this.center(index)}
+        inverse = {this.inverse(index)}
+      />);
     });
 
 
@@ -265,9 +296,9 @@ class GalleryByReactAppComponent extends React.Component {
         <section className="image-sec">
           {imgFigures}
         </section>
-        <ConrrollerNav className="controller-nav">
+        <nav className="controller-nav">
           {controllerUnits}
-        </ConrrollerNav>
+        </nav>
       </section>
     );
   }
