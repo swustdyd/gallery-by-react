@@ -6,19 +6,25 @@ import React from 'react';
 class ControllerUnit extends React.Component{
   constructor(props){
     super(props);
-    this.handleClcik = this.handleClcik.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClcik(e){
-
+  handleClick(e){
+    if(this.props.arrange.isCenter){
+      this.props.inverse();
+    }else {
+      this.props.center();
+    }
     e.stopPropagation();
     e.preventDefault();
   }
 
   render(){
-
+    var spanClassName = "controller-unit";
+    spanClassName += this.props.arrange.isCenter ? " is-center arrow" : "";
+    spanClassName += this.props.arrange.isInverse ? " is-inverse " : "";
     return(
-      <span className="controller-unit"></span>
+      <span className={spanClassName} onClick={this.handleClick}></span>
     );
   }
 }

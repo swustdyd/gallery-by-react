@@ -3,6 +3,7 @@ require('styles/App.scss');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ControllerUnit from './ControllerUnit';
 
 var imageDatas = require('../data/imageDatas.json');
 
@@ -78,31 +79,6 @@ class ImgFigure extends React.Component{
           </div>
         </figcaption>
       </figure>
-    );
-  }
-}
-
-class ControllerUnit extends React.Component{
-  constructor(props){
-    super(props);
-    this.handleClcik = this.handleClcik.bind(this);
-  }
-
-  handleClcik(e){
-    if(this.props.arrange.isCenter){
-      this.props.inverse();
-    }else{
-      this.props.center();
-    }
-    e.stopPropagation();
-    e.preventDefault();
-  }
-
-  render(){
-    var controllerUnitClassName = "controller-unit";
-    controllerUnitClassName += this.props.arrange.isCenter ? " is-center " : "";
-    return(
-      <span className={controllerUnitClassName} onClick={this.handleClcik}></span>
     );
   }
 }
@@ -283,16 +259,19 @@ class GalleryByReactAppComponent extends React.Component {
         inverse = {this.inverse(index)}
       />);
       controllerUnits.push(<ControllerUnit
-        ref={"controllerUnits" + index}
+        ref={"controllerUnit" + index}
         arrange = {this.state.imgsArrangeArr[index]}
         center = {this.center(index)}
         inverse = {this.inverse(index)}
       />);
     });
-
-
+    var viewHeight = document.body.offsetHeight;
+    //alert(viewHeight);
+    var styleObj={
+      height: viewHeight
+    };
     return (
-      <section className="stage" ref="stage">
+      <section className="stage" ref="stage" style={styleObj}>
         <section className="image-sec">
           {imgFigures}
         </section>
